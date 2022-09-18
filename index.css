@@ -1,0 +1,28 @@
+body {
+  font-family: sans-serif;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+span {
+  font-weight: 900;
+}
+
+.start-text {
+  text-align: center;
+  font-size: 32px;
+}
+
+.container {
+  width: 500px;
+  margin: 0 auto;
+}
+
+.game-area {
+  border: 2px solid #000;
+  border-top: none;
+  display: block;
+}
