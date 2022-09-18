@@ -7,18 +7,19 @@ h1 {
   margin-bottom: 50px;
 }
 
-span {
+h1 span {
   font-weight: 900;
-}
-
-.start-text {
-  text-align: center;
-  font-size: 32px;
 }
 
 .container {
   width: 500px;
   margin: 0 auto;
+  display: grid;
+  gap: 50px;
+  align-items: flex-start;
+  grid-template-areas: 
+  'game score'
+  'game next';
 }
 
 .game-area {

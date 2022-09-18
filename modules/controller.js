@@ -5,11 +5,8 @@ export class Controller {
   }
 
   init(codeKey) {
-    const startText = document.querySelector('.start-text');
-
     window.addEventListener('keydown', event => {
       if (event.code === codeKey) {
-        startText.remove();
         this.view.init();
         this.start();
       }
@@ -19,10 +16,19 @@ export class Controller {
   start() {
     this.view.showArea(this.game.viewArea);
 
-    setInterval(() => {
-      this.game.moveDown();
-      this.view.showArea(this.game.viewArea);
-    }, 100);
+    this.game.createUpdatePanels(this.view.createBlockScore(), this.view.createBlockNextTetramino());
+
+    const tick = () => {
+      const time = (1100 - 100 * this.game.lvl);
+      if (this.game.gameOver) return;
+      setTimeout(() => {
+        this.game.moveDown();
+        this.view.showArea(this.game.viewArea);
+        tick();
+      }, time > 100 ? time : 100);
+    };
+
+    tick();
 
     window.addEventListener('keydown', event => {
       const key = event.code;
@@ -41,7 +47,7 @@ export class Controller {
           this.view.showArea(this.game.viewArea);
         break;
         case 'ArrowUp':
-          this.game.rotateTetromino();
+          this.game.rotateTetramino();
           this.view.showArea(this.game.viewArea);
         break;
       }
